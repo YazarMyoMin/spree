@@ -12,6 +12,7 @@ module Spree
 
           belongs_to :bill_address, serializer: AddressSerializer
           belongs_to :ship_address, serializer: AddressSerializer
+          # belongs_to :product
 
           has_many :line_items
           has_many :payments
@@ -24,6 +25,7 @@ module Spree
           has_many :all_adjustments, serializer: :adjustments, type: :adjustment
 
           has_many :order_promotions
+          # has_many :variants
         end
       end
     end

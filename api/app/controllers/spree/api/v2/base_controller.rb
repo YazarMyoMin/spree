@@ -26,6 +26,7 @@ module Spree
         protected
 
         def serialize_collection(collection)
+          # puts "serialize_collection #{collection} #{serializer_params}"
           collection_serializer.new(
             collection,
             collection_options(collection).merge(params: serializer_params)
@@ -50,6 +51,7 @@ module Spree
         end
 
         def render_serialized_payload(status = 200)
+          puts "render_serialized_payload #{status}"
           render json: yield, status: status, content_type: content_type
         end
 

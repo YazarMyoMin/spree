@@ -16,6 +16,10 @@ module Spree
             end
           end
 
+          # def resource_serializer
+          #   Spree::Api::V2::Platform::OrderSerializer
+          # end
+
           def update
             result = update_service.call(
               order: resource,

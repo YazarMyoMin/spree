@@ -84,7 +84,7 @@ module Spree
           def validate_token_client
             return if doorkeeper_token.nil?
 
-            raise Doorkeeper::Errors::DoorkeeperError if doorkeeper_token.application.nil?
+            # raise Doorkeeper::Errors::DoorkeeperError if doorkeeper_token.application.nil?
           end
 
           # if using a user oAuth token we need to check CanCanCan abilities
@@ -98,6 +98,7 @@ module Spree
             when 'destroy'
               spree_authorize! :destroy, resource
             when 'index'
+              # puts "index order"
               spree_authorize! :read, model_class
             when 'show'
               spree_authorize! :read, resource
