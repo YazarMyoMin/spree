@@ -26,7 +26,7 @@ module MyProject
       puts "customer service permissions"
       # can :manage, :all
       # can :read, ::Spree::Order
-      # a
+
       can :read, ::Spree::Taxonomy
       # can [:create, :update, :destroy, :show, :read], ::Spree::Taxonomy
       # can :manage, ::Spree::Taxonomy
