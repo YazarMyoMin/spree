@@ -14,6 +14,7 @@ module Spree
           # index and show actions are defined in Spree::Api::V2::ResourceController
 
           def create
+            puts "create_params #{permitted_resource_params}"
             resource = model_class.new(permitted_resource_params)
             ensure_current_store(resource)
 
@@ -25,6 +26,7 @@ module Spree
           end
 
           def update
+            puts "update_params #{permitted_resource_params}"
             resource.assign_attributes(permitted_resource_params)
             ensure_current_store(resource)
 

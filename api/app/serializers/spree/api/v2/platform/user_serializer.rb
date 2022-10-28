@@ -6,6 +6,7 @@ module Spree
           set_type :user
 
           attributes :email, :first_name, :last_name, :created_at, :updated_at, :public_metadata, :private_metadata
+          # , :role_users
 
           attribute :average_order_value do |user, params|
             price_stats(user.report_values_for(:average_order_value, params[:store]))
@@ -19,6 +20,10 @@ module Spree
             price_stats(user.available_store_credits(params[:store]))
           end
 
+          attribute :full_name do |user|
+            user.first_name+user.last_name
+          end
+
           has_one :bill_address,
                   record_type: :address,
                   serializer: :address
@@ -26,6 +31,10 @@ module Spree
           has_one :ship_address,
                   record_type: :address,
                   serializer: :address
+
+          has_many :role_users,
+                  record_type: :role_user,
+                  serializer: :role_user
 
           def self.price_stats(stats)
             stats.map { |value| { currency: value.currency.to_s, amount: value.money.to_s } }

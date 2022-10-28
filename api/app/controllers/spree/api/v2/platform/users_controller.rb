@@ -23,7 +23,7 @@ module Spree
           end
 
           def spree_permitted_attributes
-            super + [:password, :password_confirmation]
+            super + [:password, :password_confirmation, spree_role_ids:[]]
           end
         end
       end
